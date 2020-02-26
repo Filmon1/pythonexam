@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/add.css' %}"> 
+    <title>Add Plan</title>
+</head>
+<body>
+    <a href="/logout" class="logout">Logout</a>
+    <a href="/travels" class="home">Home</a>
+    <h1>Add a Trip</h1>
+    <ul class="message_alert">
+        {% for message in messages%}
+        <li style="color: red;">{{message}}</li>
+        {% endfor%}
+    <div class="col-md-10">
+        <form action="/addatrip" method="post">
+            {% csrf_token %}
+            <label  class = " label col-md-2 control-label"  for="Destination">Destination:</label>
+            <input type="text" class = "form-control" name="Destination" id="">
+        </div>
+        <div class="col-md-10">
+            <label  class = " label col-md-2 control-label"  for="Description">Description:</label>
+            <input type="text" class = "form-control" name="Description" id="">
+        </div>
+        <div class="col-md-10">
+                <label  class = " label col-md-2 control-label"  for="Trave Date From">Travel Date From:</label>
+                <input type="date" class = "form-control" name="TravelDateFrom" id="">
+            </div>
+            <div class="col-md-10">
+                    <label  class = " label col-md-2 control-label"  for="Travel Date To">Trave Date To: </label>
+                    <input type="date" class = "form-control" name="TravelDateTo" id="">
+                </div>
+            <div>
+                     <input type="submit" class="btn btn-primary" value="Add">
+                </div>
+            </form>
+</body>
+</html>

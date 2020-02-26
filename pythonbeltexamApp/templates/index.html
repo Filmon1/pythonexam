@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lacquer&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <title>Login/Register</title>
+</head>
+<body>
+    <h1> Registraion Form</h1>
+    {% if messages%}
+    <ul class="message_alert">
+        {% for message in messages%}
+        <li style="color: rgb(255, 255, 255);">{{message}}</li>
+        {% endfor%}
+    </ul>
+    {% endif %}
+    <div class="col-md-5">
+<h3>Register</h3>
+
+<form action="/signup" method="post">
+    {% csrf_token %}
+        <label class = " label col-md-2 control-label"for="firstname">FirstName</label>
+        <div class="col-md-10">
+            <input type="text" class = "form-control" name="firstname" id="">
+        </div>
+        <label  class = " label col-md-2 control-label"  for="Username">Username</label>
+        <div class="col-md-10">
+            <input type="text" class = "form-control" name="username" id="">
+        </div>
+        <label class = " label col-md-2 control-label" for="Pwd">Password</label>
+        <div class="col-md-10">
+            <input type="password" class = "form-control" name="Password" id="">
+                <p style="color:white;">* Password should be be at least 8 characters</p>
+        </div>
+        <label class = " label col-md-2 control-label" for="Pwd">ConfirmPW</label>
+        <div class="col-md-10">
+            <input type="password" class = "form-control" name="confirmpw" id=""> 
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="Signup">
+        </div>
+    </form>
+</div>
+
+
+<div class="col-md-5 login-form">
+        
+        <form action="/login" method="post">
+            {% csrf_token %}
+        <h3>Login </h3>
+        <label  class = " label col-md-2 control-label"  for="username">Username</label>
+        <div class="col-md-10">
+            <input type="text" class = "form-control" name="username" id="">
+        </div>
+        <label class = "label col-md-2 control-label" for="Pwd">Password</label>
+        <div class="col-md-10">
+            <input type="password" class = "form-control" name="Password" id="">
+            </div>
+        <div>
+                <input type="submit" class="btn btn-primary" value="Login">
+        </div>
+</div>
+</form>
+</body>
+</html>

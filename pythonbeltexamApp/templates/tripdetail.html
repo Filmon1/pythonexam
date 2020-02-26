@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/tripdetail.css' %}"> 
+    <title>Destination</title>
+</head>
+<body>
+    <a href="/travels" class="home">Home</a>
+    <a href="/logout" class="logout">logout</a>
+    <h1>{{tripdetails.destination}}</h1>
+    <p>planned by:{{tripdetails.planner.firstName}}</p>
+    <p>description:{{tripdetails.description}}</p>
+    <p>Travel Date From: {{tripdetails.travel_start_date}}</p>
+    <p>Travel Date To: {{tripdetails.travel_End_Date}}</p>
+    
+    <h1>Other User's joining the trip</h1>
+    {%for user in tripdetails.joinedTraveler.all%}
+    <p>{{user.firstName}}</p>
+    {%endfor%}
+
+</body>
+</html>
