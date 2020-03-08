@@ -17,12 +17,12 @@ class formManager(models.Manager):
         elif len(postData ['username']) < 3:
             errors['shortUsername'] = " Username too short. Network cannot be least than 3 characters"
         if len(postData['Password']) < 8:
-            errors['shortPassword'] = " Password cannot be less than 8 charcharacters"
+            errors['shortPassword'] = " Password cannot be less than 8 characters"
         if len(postData['Password']) != len(postData['confirmpw']):
             errors['matchingpasswords'] = "Password don't Match"
         UsernamealradyInUse = User.objects.filter(Username = postData['username'])
         if len(UsernamealradyInUse) > 0:
-            errors['usernamexits'] = "Username already exist, Please use different email"
+            errors['usernamexits'] = "Username already exists, Please use a different Username"
         return errors
     
     def loginvalidator(self, postData):
