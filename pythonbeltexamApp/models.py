@@ -11,13 +11,13 @@ class formManager(models.Manager):
         if len(postData['firstname']) < 1:
             errors['firstnamerequired'] = "First name cannot be empty"
         elif len(postData['firstname']) < 3:
-            errors['shortfirst name'] = "first name too short. first name cannot be less than 3 characters"
+            errors['shortfirst name'] = "First name too short. First name cannot be fewer than 3 characters"
         if len(postData['username']) < 1:
-            errors['Username'] = "username cannot be empty"
+            errors['Username'] = "Username cannot be empty"
         elif len(postData ['username']) < 3:
-            errors['shortUsername'] = " Username too short. Network cannot be least than 3 characters"
+            errors['shortUsername'] = " Username too short. Username cannot be fewer than 3 characters"
         if len(postData['Password']) < 8:
-            errors['shortPassword'] = " Password cannot be less than 8 characters"
+            errors['shortPassword'] = " Passwords cannot be less than 8 characters"
         if len(postData['Password']) != len(postData['confirmpw']):
             errors['matchingpasswords'] = "Password don't Match"
         UsernamealradyInUse = User.objects.filter(Username = postData['username'])
@@ -36,7 +36,7 @@ class formManager(models.Manager):
             if bcrypt.checkpw(postData['Password'].encode(), exsitinguser[0].passsword.encode()):
                 print('password matches')
             else:
-                errors['passwordmismatch'] = 'password donnot match'
+                errors['passwordmismatch'] = 'Passwords do not match'
         return errors 
 
 class tripManager(models.Manager):
